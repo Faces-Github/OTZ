@@ -1,0 +1,715 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <title>ASAT FOLLOW UP FORM</title>
+    <style>
+    h4 {
+        text-align: left;
+    }
+    </style>
+</head>
+
+<body class="col-md-8 col-md-offset-2">
+    <div id="result"></div>
+    <form id="hts_form" name="hts_form">
+        <font color="green">
+            <h3 class="text-center"><b>ADOLESCENT SERVICE ACCESS FOLLOW UP FORM</b></h3></font>
+        <!-- Start Demographics -->
+        <div class="section">
+            <h4>Demographics</h4>
+            <div class="form-group">
+                <input class="form-control" id="patient.uuid" name="patient.uuid" type="hidden" readonly="readonly">
+            </div>
+			<div class="form-group">
+                <label for="patient.medical_record_number">Adolescent Center ID</label>
+                <input class="form-control" id="patient.medical_record_number" name="patient.medical_record_number" type="text" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.family_name">Family Name </label>
+                <input class="form-control" id="patient.family_name" name="patient.family_name" type="text" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.given_name">First Name </label>
+                <input class="form-control" id="patient.given_name" name="patient.given_name" type="text" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.middle_name">Middle Name </label>
+                <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="patient.sex">Gender </label>
+                <select class="form-control" id="patient.sex" name="patient.sex" disabled="disabled">
+                    <option value="">...</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <span id="gender_error" style="display:none;">This value is required</span>
+            </div>
+            <div class="form-group">
+                <label for="patient.birth_date">Date Of Birth </label>
+                <input class="form-control" id="patient.birth_date" name="patient.birth_date" type="text" readonly="readonly" value="">
+            </div>
+        </div>
+        <!-- End Demographics -->
+		
+        <!-- Start Telephone Number -->
+        <div class="section">
+            <h4>Contact Information</h4>
+            
+            <div class="form-group">
+            <label>Patient Phone Contact</label>
+            <input class="form-control" name="text_patient_phone" id="text_patient_phone" type="text" data-concept="1459^PHONE NUMBER^99DCT" placeholder="Patient Phone Number">
+        </div>
+            
+           
+        <!-- Start Visit Reasons -->
+        <div class="section"  id="adol_services">
+    <h4><b>VISIT REASON</b></h4>   
+  <div class="form-group ">
+                    <label>
+                        What is the reason for visit today? Check all that apply<span class="required "> *</span>
+                    </label>
+                    <br>
+                    <br>
+                    <div class="form-group" id="hts_member" style="display">
+                    <input name="visit_reason" id="hts" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8232^HTS^99DCT"> HTS
+                     </div>
+                   
+                    <div class="form-group">
+                    <input name="visit_reason" id="family_planning" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8233^Family Planning^99DCT"> FP
+                     </div>
+                    
+                     
+                     <div class="form-group">
+                    <input name="visit_reason" id="clinical_visit" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8234^Clinical Visit^99DCT"> Clinical Visit
+                     </div>
+					<div id="clinical_visit_reason" style="display: none;">
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<input name="clinical_visit_reason" id="ccc_visit" type="radio" data-concept="8234^Clinical Visit^99DCT" value="6860^PATIENT SUPPORT CENTRE CLINIC^99DCT"> CCC
+                    <br>
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<input name="clinical_visit_reason" id="pmtct_visit" type="radio" data-concept="8234^Clinical Visit^99DCT" value="8228^ANC/PNC or PMTCT^99DCT"> ANC/PNC or PMTCT
+                    <br>
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<input name="clinical_visit_reason" id="opd_visit" type="radio" data-concept="8234^Clinical Visit^99DCT" value="8227^OPD^99DCT"> OPD
+					</div>
+                    
+                    <div class="form-group">
+                    <input name="visit_reason" id="otz_meeting" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8235^OTZ Meeting^99DCT"> OTZ Meeting
+                    </div>
+                    
+                    <div class="form-group">
+					<input name="visit_reason" id="adolescent" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8236^Adolescent Club Meeting^99DCT"> Adolescent Club Meeting
+                    </div>
+                    
+                    <div class="form-group">
+                    <input name="visit_reason" id="counse_support" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8237^Counseling Support Services^99DCT"> Counseling Support Services
+                    </div>
+					<div id="counse_suppo_services" style="display: none;">
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+					<input name="counse_suppo_services" id="adherence_support" type="radio" data-concept="8237^Counseling Support Services^99DCT" value="8229^Adherence^99DCT"> Adherence
+                    <br>
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<input name="counse_suppo_services" id="disclosure_support" type="radio" data-concept="8237^Counseling Support Services^99DCT" value="8230^Disclosure^99DCT"> Disclosure
+                    <br>
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<input name="counse_suppo_services" id="psycho_support" type="radio" data-concept="8237^Counseling Support Services^99DCT" value="1766^PSYCHIATRY COUNSELING^99DCT"> Psycho-Social
+					</div>
+                    
+                    <div class="form-group">
+                    <input name="visit_reason" id="resource" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8238^Resource Center^99DCT"> Resource Center
+                    </div>
+					<div id="resource_center_member" style="display: none;">
+					&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+					<label>Membership Number</label>
+                    <input name="resource_center_member" id="member_number" type="text" data-concept="8231^Membership Number^99DCT" placeholder="Membership Number">
+                    </div>					
+                    
+                    <div class="form-group"></div>
+                    <input name="visit_reason" id="fun_day" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="8239^Fun Day^99DCT"> Fun Day
+                    </div>
+                    
+					<div class="form-group"></div>
+					<input name="visit_reason" id="other_visitreason" type="checkbox" data-concept="8240^Reason for Visit^99DCT" value="5622^OTHER NON-CODED^99DCT"> Other
+
+
+<div id="specify_othervisit" style="display:none">
+                    <div class="form-group">
+					
+                        <label for="specify">Specify </label>
+                        <input class="form-control" id="specify" name="specify" type="text" data-concept="7918^Other(Specify)^99DCT" placeholder="specify other reason">
+                    </div>
+                </div>	
+
+
+                    </div>
+					
+					
+				
+					
+                </div>
+        </div>
+        <!-- End Visit Reason -->
+        
+        <div class="section">
+            <div class="form-group">
+                <label for="encounter.location_id">Facility Name <span class="required">*</span></label>
+                <input class="form-control valid-location-only" id="encounter.location_id" type="text" placeholder="Start typing something..." required="required">
+                <input class="form-control" name="encounter.location_id" type="hidden">
+            </div>
+            <div class="form-group hidden">
+                <label for="encounter.location_id_select">Facility Name <span class="required">*</span></label>
+                <select class="form-control" id="encounter.location_id_select" required="required">
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="encounter.provider_id_select">Provider Name <span class="required">*</span></label>
+                <input class="form-control valid-provider-only" id="encounter.provider_id_select" type="text" required="required" placeholder="Start typing something...">
+                <input class="form-control" name="encounter.provider_id_select" type="hidden">
+            </div>
+            <div class="form-group hidden">
+                <select id="select_providers">
+                </select>
+            </div>
+            <div class="form-group show_provider_id_text">
+                <label for="encounter.provider_id">Provider's System-Id <span class="required">*</span></label>
+                <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id" type="text" required="required" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="encounter.encounter_datetime">Encounter Date <span class="required">*</span></label>
+                <input class="form-control nonFutureDate past-date datepicker" readonly="readonly" id="encounter.encounter_datetime" name="encounter.encounter_datetime" type="text" required="required">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid" type="hidden" required="required">
+            </div>
+        </div>
+        
+    </form>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+    var dateFormat = "dd-mm-yy";
+    var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+    var encounterDatetime = $('#encounter\\.encounter_datetime');
+    if ($(encounterDatetime).val() == "") {
+        $(encounterDatetime).val(currentDate);
+    }
+    var currentYear = new Date().getFullYear();
+    var birthdate_start_year = currentYear - 140;
+    $('.birth_date_picker').datepicker({
+        dateFormat: dateFormat,
+        changeMonth: true,
+        changeYear: true,
+        yearRange: birthdate_start_year + ':' + currentYear,
+    });
+    $('#save_draft').click(function() {
+        // pre process the medications
+        $(this).prop('disabled', true);
+        document.saveDraft(this);
+        $(this).prop('disabled', false);
+    });
+    $('#submit_form').click(function() {
+        // pre process the medications
+        $(this).prop('disabled', true);
+        document.submit();
+        $(this).prop('disabled', false);
+    });
+    $.fn.calculateFields = function() {
+        var tempAgeInYears = $.trim($("#tmp\\.age_in_years").val());
+        if (tempAgeInYears != '') {
+            $('#patient\\.birthdate_estimated').val('true');
+            $('#patient\\.birth_date').val($.fn.getTempBirthDate(tempAgeInYears));
+        }
+        return true;
+    };
+    $.fn.customValidationCheck = function() {
+        return $.fn.calculateFields();
+    };
+    var dobType = $('#tmp\\.birthdate_type');
+    dobType.change(function() {
+        var $show_birth_date = $('.show_birthdate');
+        var $show_age = $('.show_age');
+        if ($('#tmp\\.birthdate_type').val() == 'age') {
+            $show_age.show();
+            $show_birth_date.find('input').val('');
+            $show_birth_date.hide();
+        } else {
+            $show_age.hide();
+            $show_age.find('input').val('');
+            $show_birth_date.show();
+        }
+    });
+    dobType.trigger('change');
+    jQuery.validator.addClassRules({
+        'check-confirm-identifier': {
+            validateConfirmIdentifierElement: true
+        }
+    });
+    var $negativeSelect = $('.negativeSelect');
+    $negativeSelect.change(function() {
+        var $negativeSectionToShow = $(this).closest('.section').find('.negativeSectionToShow');
+        var $positiveSectionToShow = $(this).closest('.section').find('.positiveSectionToShow');
+        var divToShowVal = $(this).val();
+        if (divToShowVal == '664^NEGATIVE^99DCT') {
+            $negativeSectionToShow.show();
+            $positiveSectionToShow.hide();
+        } else if (divToShowVal == '703^POSITIVE^99DCT') {
+            $positiveSectionToShow.show();
+            $negativeSectionToShow.hide();
+        } else {
+            $negativeSectionToShow.hide();
+            $positiveSectionToShow.hide();
+        }
+    });
+    $negativeSelect.trigger('change');
+    var $inCareSelect = $('.inCareSelect');
+    $inCareSelect.change(function() {
+        var $inCareSelectSectionToShow = $(this).closest('.section').find('.inCareSelectSectionToShow');
+        var divToShowVal = $(this).val();
+        if (divToShowVal == '1065^Yes^99DCT') {
+            $inCareSelectSectionToShow.show();
+        } else {
+            $inCareSelectSectionToShow.hide();
+        }
+    });
+    $inCareSelect.trigger('change');
+    var $testResults = $('.testResults');
+    $testResults.change(function() {
+        var $testResultSectionToShow = $(this).closest('.section').find('.testResultSectionToShow');
+        var divToShowVal = $(this).val();
+        if (divToShowVal == '...') {
+            $testResultSectionToShow.hide();
+        } else {
+            $testResultSectionToShow.show();
+        }
+    });
+    $testResults.trigger('change');
+    var $yesClass = $('.yesClass');
+    $yesClass.change(function() {
+        var $yeClassToShow = $(this).closest('.section').find('.yesClassToShow');
+        var divToShowVal = $(this).val();
+        if (divToShowVal == '1065^YES^99DCT') {
+            $yeClassToShow.show();
+        } else {
+            $yeClassToShow.hide();
+        }
+    });
+    $yesClass.trigger('change');
+    document.setupAutoCompleteData('encounter\\.location_id');
+    document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
+    $('#registration_form').validate({
+        rules: {
+            'tmp.age_in_years': {
+                range: [0, 120]
+            }
+        }
+    });
+    $("input[name='pt']:radio")
+        .change(function() {
+            $("#key_p_details").toggle($(this).val() == "7771^Key Pop^99DCT");
+        });
+    $("input[name='disability']:radio")
+        .change(function() {
+            $("#disability_details").toggle($(this).val() == "1065^YES^99DCT");
+        });
+    $("input[name='linked']:radio")
+        .change(function() {
+            $("#ccc_no_div").toggle($(this).val() == "1065^YES^99DCT");
+        });
+    var $patientSex = $('#patient\\.sex');
+    var $menOnly = $('.men_relevant');
+    var $womenOnly = $('.women_relevant');
+    if ($patientSex.val() != 'F') {
+        $menOnly.show();
+        $womenOnly.hide();
+    } else {
+        $menOnly.hide();
+        $womenOnly.show();
+    }
+    /*$('.kit-expiry-date').change(function () {
+            var dateFormat = "dd-mm-yy";
+            var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+            var $date = $(this).val();
+            if ($date < currentDate) {
+                $(this).closest('.section').find('.date_alert').show();
+            } else {
+                $(this).closest('.section').find('.date_alert').hide();
+            }
+        });*/
+    $('.final_auto_check').change(function() {
+        if ($("input:radio[name=hiv_test_one]").is(":checked")) {
+            var $test_one = $('input[name=hiv_test_one]:checked').val();
+            var $test_two = $('input[name=hiv_test_two]:checked').val();
+            if ($test_one === "664^NEGATIVE^99DCT") {
+                $("#hiv_final_n").prop("checked", true);
+                $('.other_tests').hide();
+            } else {
+                $('.other_tests').show();
+                $("#hiv_final_n").prop("checked", false);
+                if ($("input:radio[name=hiv_test_one]").is(":checked") && $("input:radio[name=hiv_test_two]").is(":checked")) {
+                    if ($test_one === $test_two) {
+                        if ($test_one === "703^POSITIVE^99DCT") {
+                            $("#hiv_final_p").prop("checked", true);
+                        } else {
+                            $("#hiv_final_n").prop("checked", true);
+                        }
+                    } else {
+                        $("#hiv_final_i").prop("checked", true);
+                    }
+                }
+            }
+        }
+    });
+    $('.client_consent_informed').hide();
+    $('.patient_consent').change(function() {
+        if ($("input:radio[name=client_consent]").is(":checked") && $('input[name=client_consent]:checked').val() === "1065^Yes^99DCT") {
+            $('.client_consent_informed').show();
+        } else {
+            $('.client_consent_informed').hide();
+        }
+    });
+    $('#hts_form').validate({
+        // other options,
+        rules: {
+            educationschool: {
+                required: true
+            },
+		    clinical_visit_reason: {
+                required: true
+            },
+			clinical_visit: {
+                required: true
+            },
+			counse_support: {
+                required: true
+            },
+			counse_suppo_services: {
+                required: true
+            },
+			orphan_has: { // <- NAME of every radio in the same group orphan ,
+                required: true
+            },
+			resource_center_member: {
+                required: true
+            },
+			educationschools: {
+                required: true
+            },
+            education: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			other_visitreason: { // <- NAME of every radio in the same group  ,  other_relations
+                required: true
+            },
+			other_relations: { // <- NAME of every radio in the same group  ,  other_relations
+                required: true
+            },
+            client_consent: { // <- NAME of every radio in the same group ,relationship
+                required: true
+            },
+            relationship: { // <- NAME of every radio in the same group education ,
+                required: true
+            },
+            pt: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            tb_screening: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            discordant: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            specify: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			
+			/*hiv_pos_info: { // <- NAME of every radio in the same group otz_member ,
+                required: true
+            }, */
+            
+            otz_member: { // <- NAME of every radio in the same group otz_member ,
+                required: true
+            },
+			
+			hivstatuspos: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			resource: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+		
+            mch_depart: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            expiry_date_1: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            strategy: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            facility_depart: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            hiv_test_one: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            hiv_test_two: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            ever_tested: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			school_going: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            duration_of_test: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            disability: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            couple_testing: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			patient_orphaned: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			
+			hivstatus: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+			specify_othervisit: { // <- NAME of every radio in the same group  , specify_otherrelation
+                required: true
+            },
+			specify_otherrelation: { // <- NAME of every radio in the same group  , specify_otherrelation
+                required: true
+            },
+			
+            type_of_disability: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            type_of_key_p: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            flt: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            ccc: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            hwht: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            enrollment_date: { // <- NAME of every radio in the same group  ,
+                required: true
+            },
+            phone: { // <- NAME of every radio in the same group  ,
+                required: true
+            }
+        }
+    });
+    $("input[name='hiv_test_one']:radio")
+        .change(function() {
+            $("#hiv_confirmatory_test").toggle(($(this).val() == "703^POSITIVE^99DCT") || ($(this).val() == "1304^POOR SAMPLE QUALITY^99DCT"));
+        });
+		
+	$("input[name='patient_orphaned']:radio")
+        .change(function() {
+            $("#orphan_has").toggle($(this).val() == "1065^Yes^99DCT");
+        });
+		
+	$("input[name='hivstatus']:radio")
+        .change(function() {
+            $("#otz_member").toggle($(this).val() == "1847^HIV POSITIVE^99DCT");
+        });
+        
+     /*$("input[name='hivstatus']:radio")
+        .change(function() {
+            $("#hts_member").hide($(this).val() == "1847^HIV POSITIVE^99DCT");
+        });*/
+
+
+
+
+
+$("input[id='hivstatuspos']:radio")
+        .change(function() {          
+            if($(this).is(':checked')){
+                ($("#hts_member").toggle($(this).val() == "1847^HIV POSITIVE^99DCT") && $("#lastnegtestdate").toggle($(this).val() == "1847^HIV POSITIVE^99DCT"));
+                ($("#hts_member").hide() && $("#lastnegtestdate").hide());
+
+
+
+
+
+            
+            }
+
+});
+
+
+$("input[id='hivstatusunk']:radio")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#hts_member").toggle($(this).val() == "1067^UNKNOWN^99DCT");
+                $("#hts_member").show();
+
+            
+            }
+
+});
+
+
+$("input[id='hivstatusneg']:radio")
+        .change(function() {          
+            if($(this).is(':checked')){
+                ($("#hts_member").toggle($(this).val() == "1848^HIV NEGATIVE^99DCT") && $("#lastnegtestdate").toggle($(this).val() == "1848^HIV NEGATIVE^99DCT"));   //lastnegtestdate
+                ($("#hts_member").show()&& $("#lastnegtestdate").show());
+
+            
+            }
+});
+
+
+
+
+
+
+$("input[id='hivstatusunk']:radio")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#hts_member").toggle($(this).val() == "1067^UNKNOWN^99DCT");
+                $("#lastnegtestdate").hide();
+
+            
+            }
+
+});
+
+
+        
+  
+		
+	
+    $("input[name='educationschool']:radio")
+        .change(function() {
+            $("#specify_otherschool").toggle($(this).val() == "5622^OTHER NON-CODED^99DCT");
+        });
+	$("input[id='other_visitreason']:checkbox")
+        .change(function() {
+            $("#specify_othervisit").toggle($(this).val() == "5622^OTHER NON-CODED^99DCT"); <!--specify_otherrelation -->
+        });
+		
+
+		
+	$("input[name='school_going']:radio")
+        .change(function() {
+            $("#educationschool").toggle($(this).val() == "1065^YES^99DCT");
+        });
+
+
+
+
+$("input[id='other_relations']:radio")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#specify_otherrelation").toggle($(this).val() == "5622^OTHER NON-CODED^99DCT");
+                $("#specify_otherrelation").show();
+
+            
+            }
+            else
+            {
+                console.log("UNCheckeddddddd ssssssssssssssss");
+                $("#specify_otherrelation").hide();
+                $("#specify_otherrelation").toggle($(this).val() == "");
+            
+            }
+
+        });
+
+
+
+    
+
+	$("input[id='clinical_visit']:checkbox")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#clinical_visit_reason").toggle($(this).val() == "8234^Clinical Visit^99DCT");
+                $("#clinical_visit_reason").show();
+
+            
+            }
+            else
+            {
+                console.log("UNCheckeddddddd ssssssssssssssss");
+                $("#clinical_visit_reason").hide();
+                $("#clinical_visit_reason").toggle($(this).val() == "");
+            
+            }
+
+        });
+
+
+$("input[id='counse_support']:checkbox")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#counse_suppo_services").toggle($(this).val() == "8237^Counseling Support Services^99DCT");
+                $("#counse_suppo_services").show();
+
+            
+            }
+            else
+            {
+                console.log("UNCheckeddddddd ssssssssssssssss");
+                $("#counse_suppo_services").hide();
+                $("#counse_suppo_services").toggle($(this).val() == "");
+            
+            }
+
+        });
+
+
+
+$("input[id='resource']:checkbox")
+        .change(function() {          
+            if($(this).is(':checked')){
+                $("#resource_center_member").toggle($(this).val() == "8238^Resource Center^99DCT");
+                $("#resource_center_member").show();
+
+            
+            }
+            else
+            {
+                console.log("UNCheckeddddddd ssssssssssssssss");
+                $("#resource_center_member").hide();
+                $("#resource_center_member").toggle($(this).val() == "");
+            
+            }
+
+        });                        
+               
+        
+			
+		
+
+    
+    document.setupValidationForProvider("$('#encounter\\.provider_id_select').val()", "encounter\\.provider_id");
+    document.setupValidationForLocation("$('#encounter\\.location_id').val()", "encounter\\.location_id");
+
+
+    
+    
+});
+</script>
+</html>
